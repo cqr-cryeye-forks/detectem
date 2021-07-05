@@ -140,6 +140,9 @@ def main(timeout, format, metadata, list_plugins, save_har, input_file, input_ur
 
     printer(results)
 
+    with open('output.json', 'w') as f:
+        json.dump(results, f, indent=2)
+
     splash_manager.teardown()
 
 
