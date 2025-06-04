@@ -1,0 +1,25 @@
+FROM python:3.6-slim
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libxml2-dev \
+    libxslt-dev
+
+WORKDIR /wd
+#RUN pip install detectem
+COPY requirements/base.txt base.txt
+COPY requirements/devel.txt devel.txt
+
+RUN pip install --requirement base.txt
+RUN pip install --requirement devel.txt
+
+WORKDIR /wd/app
+
+
+COPY . .
+
+USER nobody
+
+#ENTRYPOINT ["python3", "detectem/cli.py"]
+ENTRYPOINT ["python3", "-m", "detectem.cli"]
+CMD ["--timeout", "30", "--format", "json", "-metadata", "--save-har", "-i", "input_urls.txt"]
