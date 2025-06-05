@@ -3,3 +3,4 @@
 !requirements/
 !input_urls.txt
 !.env
+!main.py

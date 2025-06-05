@@ -15,11 +15,9 @@ RUN pip install --requirement devel.txt
 
 WORKDIR /wd/app
 
-
 COPY . .
 
 USER nobody
 
-#ENTRYPOINT ["python3", "detectem/cli.py"]
-ENTRYPOINT ["python3", "-m", "detectem.cli"]
+ENTRYPOINT ["python3", "main.py"]
 CMD ["--timeout", "30", "--format", "json", "-metadata", "--save-har", "-i", "input_urls.txt"]

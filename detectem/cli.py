@@ -253,7 +253,3 @@ def get_plugins(metadata):
         else:
             results.append(p.name)
     return results
-
-
-if __name__ == "__main__":
-    main()
